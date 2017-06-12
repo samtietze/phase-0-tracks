@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Practice Form</title>
+</head>
+<body>
+  <h1>Form</h1>
+  <form name="cheese" action="./success.html" method="post">
+    <fieldset>
+      <div>
+        <label>Your Name:</label>
+        <input type="text" name="fullname">
+      </div>
+      <div>
+        <label>Age</label>
+        <input type="number" name="age">
+      </div>
+      <div>
+        <label>Years Eating Cheese:</label>
+        <input type="number" name="cheesepertise">
+      </div>
+    </fieldset>
+    <fieldset>
+      <div>
+        <label>Favorite Type of Cheddar:</label><br>
+        <select name="cheddar">
+          <option value="sharp">Sharp</option>
+          <option value="extra sharp">Extra Sharp</option>
+          <option value="mild">Mild</option>
+        </select>
+      </div><br>
+
+      <div>
+        <label>Favorite Time for Cheese Consumption:</label><br>
+        <input type="time" name="cheesetime">
+      </div><br>
+
+      <div>
+        <label>Do You Like Blue Cheese?</label><br>
+        <input type="radio" name="bluecheese" value="yes">
+        Yes
+        <input type="radio" name="bluecheese" value="no">
+        No
+        <input type="radio" name="bluecheese" value="unknown">
+        I don't know
+      </div><br>
+
+      <div>
+        <input type="checkbox" name="stinky" value="agree">
+        <label>I Don't Mind Stinky Cheese</label>
+      </div><br>
+
+      <div>
+        <label>What is your fondest memory of cheese?</label><br>
+        <textarea name="cheesememory" placeholder="When I was but a young child..."></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit">Goudone</button>
+  </form>
+</body>
+</html>
