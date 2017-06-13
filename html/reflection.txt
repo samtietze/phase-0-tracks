@@ -1,0 +1,49 @@
+# HTML Reflection
+
+1. Briefly describe your understanding of what the browser does, including definitions of the following:
+* client
+* server
+* render
+
+The browser is our Rosetta Stone for all the code that sits under the hood on a website. The user's browser, or client, reaches out to a server (or several servers) and requests information. Servers are computers connected to the internet that act as storage for the elements of a website. The information a website uses comes in as many flavors as one might imagine. For the most part, the information is related to the function of the website. The client translates all the information it has received, and based on the browser's various rules provides the website and all of its images, columns, colors, etc. This process is referred to as rendering, and is one of the most important aspects of using a modern website.
+
+2. What is HTML? In your answer, include definitions of the following:
+* tag
+* element
+* node
+* attribute
+* block element
+* inline element
+
+As mentioned previously, the information stored by a server is used to create or render a website. The mechanisms that make this possible are almost magic, but maybe not quite as ill defined. HTML uses a great number of **tags** that each perform a particular task, or provide some function to the group of text in which they are found. Tags all behave a little differently. **Elements** are tags that determine what the next pieces of code will do. For example, an element is the sort of tag that might tell a client that the next line of text is a link to another website. Alternatively, an element could load an image or provide a neat animation. Elements set the tone for the **nodes** they are comprised of. A "node" is basically any part of HTML when its pieces are broken up into chunks. Since each element performs different tasks, each element must also be given more precise controls, or **attributes** that tell them more specifically how to behave, or what to produce. These are the adjectives of the HTML language, and as such they are used to provide qualities to any tag they're attached. For example, an attribute might indicate that a video should be `muted` when it initially loads. When creating a form, a developer will use attributes to tag each section of a survey so they can extrapolate from tons of answers. Without these `name` attributes a developer would have a harder time of boiling down hundreds of responses to find the data they need.
+**Block elements** and **inline elements** refer broadly to two types of HTML elements and how they're used. A block element starts on a new line of code, and breaks up the content of the page. For example, if a developer started a new paragraph of text using the `<p>` tag, the page would automatically display a second paragraph of text. There would be no sensible way to have a second paragraph start on the same block of text. Conversely, an inline element can become nested within a block element. A paragraph of text could have bold or italic fonts thanks to inline elements. Any HTML tags that don't need to start on a new line of code fall into this group. An amusing irony is that `<br>` is an inline element, because its use dictates the beginning of a new block of code or space.
+
+3. Very briefly, explain the purpose of the following elements:
+* head
+* body
+* p
+* form
+* div
+* span
+* select
+* h2
+* ol
+* ul
+* table
+* tr
+* td
+
+Each HTML document or page includes a couple of required elements. The head and the body are semantically linked to what one might imagine. The head is where we indicate the title of the tab or page. The body is where almost all of its content is laid out.
+
+The paragraphs of text one might find in a given webpage are typically indicated with the `<p>` tag. When one paragraph of text ends, a developer starts a new block element of text with a second `<p>` tag rather than using a carriage return.
+Any user input a webpage might require is accomplished with the `<form>` tag. This element has tons of other elements nested within it that each determine how a form might look and what sort of fields or other values, like checkboxes, it might contain.
+
+`<div>` and `<span>` are similar. When a section of content should be stylistically contained within a block element, but isn't necessarily a paragraph of text, `<div>` comes in handy. It allows a developer to come back later and implement style controls or rules to specific sections in order to produce a uniform structure across their website's various pages. `<span>` contributes the same ability, but is an inline element, and so only applies to single lines of text/code (e.g. within a table's cells).
+
+A website's forms might have any number of mechanisms to solicit user input. One of those that most people are familiar with is the dropdown menu. It provides the user with a group of options from which to choose. In HTML this element is represented by `<select>`. The `<select>` block element contains nested `<option>` elements to represent the various choices in a dropdown menu.
+
+The header a developer chooses to use is typically styled in CSS, but there are six different levels or ranks of headers found within HTML. `<h2>` is the second level in that heirarchy.
+
+When a developer needs to provide a list of items, it will either be ordered using <`<ol>` or it will be unordered using `<ul>`. Within these block elements are list items indicated by `<li>`. A general rule of thumb to use is that if the list's meaning would be altered by changing the items in that list, an ordered list is required. For example, if you described the steps needed to bake bread, you couldn't use an unordered list. If you did, the user might put a bowl of dry flour in a hot oven. That doesn't make any sense at all.
+
+The `<table>` on a website is also styled using CSS, but rudimentarily laid out by the HTML code. The elements within `<table>` define the number of rows it has using `<tr>`. Nested within this `<tr>` element are the data of that table, indicated by `<td>`. Each cell should have some data within it.
