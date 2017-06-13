@@ -10,3 +10,11 @@
 .accomplishments {
   font-size: .8em;
 }
+.volunteer-gig:hover {
+  font-size: 1.2em;
+  color: red;
+}
+ul > li {
+  font-style: italic;
+}
+
