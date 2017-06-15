@@ -1,9 +1,18 @@
-
 #octobox {
   width: 210px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 100px;
+  /*padding-top: 100px;*/
   border: 1px solid;
   z-index: 0;
+  position: relative;
+}
+#octohat {
+  z-index: 1;
+  border: 1px solid;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 275px;
+  top: 100px;
 }
