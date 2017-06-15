@@ -1,0 +1,9 @@
+
+#octobox {
+  width: 210px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+  border: 1px solid;
+  z-index: 0;
+}
