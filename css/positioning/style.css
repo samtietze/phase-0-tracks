@@ -1,18 +1,33 @@
 #octobox {
   width: 210px;
-  margin-left: auto;
-  margin-right: auto;
-  /*padding-top: 100px;*/
+  margin-left: 40%;
+  top: 25%;
   border: 1px solid;
   z-index: 0;
-  position: relative;
+  position: absolute;
 }
 #octohat {
+  z-index: 2;
+  border: 1px solid;
+  position: absolute;
+  margin-left: 40%;
+  width: 275px;
+  top: 15%;
+}
+#octoglasses {
   z-index: 1;
   border: 1px solid;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 275px;
-  top: 100px;
+  position: absolute;
+  margin-left: 40%;
+  width: 135px;
+  top: 41%;
+}
+#octo {
+  border: 1px solid;
+}
+#glasses {
+  border: 1px solid;
+}
+#hat {
+  border: 1px solid;
 }
