@@ -1,0 +1,33 @@
+#octobox {
+  width: 210px;
+  margin-left: 40%;
+  top: 25%;
+  border: 1px solid;
+  z-index: 0;
+  position: absolute;
+}
+#octohat {
+  z-index: 2;
+  border: 1px solid;
+  position: absolute;
+  margin-left: 40%;
+  width: 275px;
+  top: 15%;
+}
+#octoglasses {
+  z-index: 1;
+  border: 1px solid;
+  position: absolute;
+  margin-left: 40%;
+  width: 135px;
+  top: 41%;
+}
+#octo {
+  border: 1px solid;
+}
+#glasses {
+  border: 1px solid;
+}
+#hat {
+  border: 1px solid;
+}
