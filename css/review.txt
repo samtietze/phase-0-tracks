@@ -1,0 +1,21 @@
+Name at least three categories of CSS adjustments (example: colors)?
+	I believe this refers to the different ways that CSS affects HTML tags. CSS adjusts the way that any and all of these items appear through classes and IDs. Some further examples include the color that text appears in, or the pseduoclass-provided changes to a link as the user hovers over it. Changes could also be made to the body that holds the rest of this HTML within it.
+
+What are the three ways to link a CSS rule to an HTML document? Which one is the best and why?
+	• External style sheet
+	• Internal style shee
+	• Inline style
+
+	Linking is perhaps best due to its simplicity. There are other ways to do it. Linking to an external file doesn't make any changes to the HTML file, so it can always be done pretty easily. Some might say inline style is better because it cuts down on how much CSS one might use.
+
+What is a selector? Give examples of at least three types of selectors.
+	CSS operates by selecting HTML to apply to, or operate on. When someone decides what some chunk of HTML should look like, they apply it to a specific part of that HTML document. The CSS code typically applies to a class or an ID specified within the HTML. A class of code is able to be referenced a lot, wheras an ID is only usable once.
+What is the box model?
+	The box model is a great way of visualizing CSS' effects on a page and its HTML. Each item is given a container, and each item can be moved around the page with relation to this container and through various effects with these boxes.
+Explain and give an example of the cascading effect of CSS.
+	If two pages of HTML have the same CSS page linked in their header, the CSS page's style will apply to all of that HTML. If an item is nested or contained wtihin some HTML, both of those items will be affected by its CSS.
+Name two CSS techniques that assist in responsive design
+	Provide response UIs 
+	Provide scalable UIs
+	CSS can be applied to a style that occurs with a tag for that style. Percentages with relation to box. Percentages with relation to the viewport or browser width.
+
