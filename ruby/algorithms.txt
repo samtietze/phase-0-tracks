@@ -1,0 +1,21 @@
+- If going up, press the up button.
+  - Otherwise, press the down button.
+- When the doors open, enter the elevator.
+- Press the button corresponding to the floor of your destination.
+  - Until the doors open, do not talk or make eye contact with anybody.
+- When the doors open:
+  - If the elevator is on the floor of your destination, exit abruptly and rudely.
+  - Otherwise remain put and do not make room for others.
+
+Make coffee
+- Yawn
+- If there is leftover coffee already ground up, grab it
+  - Otherwise, grind some coffee beans
+- Pour water into the base of the pot up to the line.
+- Pour coffee into the middle coffee container.
+  - Once full, place coffee container over base.
+  - If any stray grains of coffee are around the base, clear them off.
+- Screw top onto espresso maker.
+- Place espresso maker onto medium-high stovetop burner.
+- Until the coffee spews out the top, yawn.
+- Once the coffee is done percolating out of the espresso top, pour it into a mug.
