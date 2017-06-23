@@ -31,4 +31,21 @@ def encrypt(password)
   puts new_password
 end
 
-encrypt(password)
+
+def decrypt(password)
+  alpha = "abcdefghijklmnopqrstuvwxyz"
+  i = 0
+  new_password = ""
+  while i < password.length
+    alpha_index = alpha.index(password[i]) - 1
+    if alpha[alpha_index] == nil
+      alpha[alpha_index] = "z"
+    end
+    # puts alpha_index
+    new_password += alpha[alpha_index]
+    i += 1
+  end
+  puts new_password
+end
+
+decrypt(password)
