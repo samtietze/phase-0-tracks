@@ -1,9 +1,11 @@
-# Adding some quick questions:
+=begin
+Adding some quick questions:
 # What is your name?
 # How old are you?
 # What year were you born?
 # Do you want some garlic bread?
 # Would you like to enroll in our health insurance plan?
+=end
 
 puts "Welcome to Werewolf, Inc. We here at Werewolf, Inc. are excited to get to know you. Please take a moment to answer the following questions:"
 puts "What is your name?"
@@ -18,4 +20,16 @@ puts "Finally, we here at Werewolf, Inc. want to make sure that all of our emplo
 immortalstate = gets.chomp
 
 # debug output dump to follow
-puts "#{vampname}, #{age}, #{birthyear}, #{garlicaversion}, #{immortalstate}"
+#puts "#{vampname}, #{age}, #{birthyear}, #{garlicaversion}, #{immortalstate}"
+
+=begin
+Next match some conditions:
+- correct age && (garlic bread || health insurance)
+  - Probably not a vampire
+- incorrect age && hates garlic && waives insurance)
+  - Almost certainly a vampire
+- If name is "Drake Cula" || "Tu Fang"
+  - Definitely a vampire
+- Else print "Results inconclusive"
+=end
+
