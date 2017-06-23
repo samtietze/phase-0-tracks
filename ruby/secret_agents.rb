@@ -14,13 +14,16 @@
 # - The challenge is that there is no built-in method for going backwards.
 #   - Create an alphabet string and then ask for the index of a particular letter and receive the index space of the previous letter.
 
-string = "camel"
-def encrypt(string)
+password = "camel"
+def encrypt(password)
   alpha = "abcdefghijklmnopqrstuvwxyz"
   i = 0
   new_password = ""
-  while i < string.length
-    alpha_index = alpha.index(string[i]).next
+  while i < password.length
+    alpha_index = alpha.index(password[i]).next
+    if alpha[alpha_index] == nil
+      alpha[alpha_index] = "a"
+    end
     # puts alpha_index
     new_password += alpha[alpha_index]
     i += 1
@@ -28,4 +31,4 @@ def encrypt(string)
   puts new_password
 end
 
-encrypt(string)
+encrypt(password)
