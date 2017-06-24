@@ -13,6 +13,7 @@
 #     - As long as we do the math right, the check can simply be that the end result is zero.
 #   - We will ask a couple of yes or no questions.
 #     - Whether a user wants garlic bread will evaluate as true or false.
+#        - This is tough because we need to call this out right away!
 #     - Whether a user wants health insurance will evaluate as true or false.
 # All of these questions will need to be assigned to variables in order to work with them later.
 #   - Some results will equate to a final "else" statement indicating the results were inconclusive.
@@ -22,7 +23,6 @@ puts "Welcome to Werewolf, Inc. We here at Werewolf, Inc. are excited to get to 
 puts "What is your name?"
 vampname = gets.chomp
 
-
 puts "How old are you?"
 age = gets.chomp
 
@@ -30,13 +30,20 @@ puts "Specifically, what year were you born?"
 birthyear = gets.chomp
 
 puts "Our employee cafeteria serves some bomb garlic bread, and it just came out of the oven. Should we order some for you?"
-garlicaversion = gets.chomp
+garliclover = gets.chomp
+garliclover.downcase!
+
+if garliclover.includes?("yes")
+  garliclover = true
+elsif garliclover.includes?("no")
+  garliclover = false
+end
 
 puts "Finally, we here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our health. Would you like to enroll in our group health insurance policy?"
-immortalstate = gets.chomp
+insurance = gets.chomp
 
 # debug output dump to follow
-#p #{vampname}, #{age}, #{birthyear}, #{garlicaversion}, #{immortalstate}
+#p #{vampname}, #{age}, #{birthyear}, #{garliclover}, #{insurance}
 
 # Once the initial variable answers are collected, we need to evaluate them against AND with each other.
 #   This will need to result in:
@@ -47,16 +54,6 @@ immortalstate = gets.chomp
 #   - If the employee's name matches some of the "known vampire" names, we will evaluate to "Definitely a vampire"
 # If none of these conditions match, we'll print "Results inconclusive"
 
-
-# Next match some conditions:
-# - correct age && (garlic bread || health insurance)
-#   - Probably not a vampire
-# - incorrect age && hates garlic && waives insurance)
-#   - Almost certainly a vampire
-# - If name is "Drake Cula" || "Tu Fang"
-#   - Definitely a vampire
-# - Else print "Results inconclusive"
-
 t = Time.new
 t.year # provides current year
 t.year - age.to_i == birthyear.to_i
@@ -66,4 +63,15 @@ else
   correct_age = false
 end
 
-
+case vampire
+when correct_age && (garliclover || insurance)
+  "Probably not a vampire."
+when !correct_age && (!garliclover || !insurance)
+  "Probably a vampire."
+when !correct_age && !garliclover && !insurance
+  "Almost certainly a vampire."
+when vampname.includes?("Drake Cula") || vampname.includes?("Tu Fang")
+  "Definitely a vampire."
+else
+  "Results inconclusive."
+end
