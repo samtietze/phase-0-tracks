@@ -44,7 +44,8 @@ while survey < employees.to_i
     garliclover = false
   end
 
-  puts "• Finally, we here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our beating hearts. Would you like to enroll in our group health insurance policy?"
+  puts "We here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our beating hearts.
+• Would you like to enroll in our group health insurance policy?"
   insurance = gets.chomp
   insurance.downcase!
 
@@ -52,6 +53,16 @@ while survey < employees.to_i
     insurance = true
   elsif insurance.include?("no")
     insurance = false
+  end
+
+  allergies = ""
+  until allergies.include?("done")
+    puts "Please provide any allergies that we should be aware of. Please type 'done' when complete."
+    allergies = gets.chomp
+    allergies.downcase!
+    if allergies.include?("sunshine")
+      break
+    end
   end
 
 # debug output dump to follow
@@ -81,6 +92,8 @@ while survey < employees.to_i
   puts case
   when vampname === "drake cula" || vampname === "tu fang"
     "Definitely a vampire."
+  when allergies.include?("sunshine")
+    "Probably a vampire."
   when correct_age && (garliclover || insurance)
     "Probably not a vampire."
   when !correct_age && !garliclover && !insurance
@@ -97,3 +110,7 @@ while survey < employees.to_i
 
   survey += 1
 end
+
+# The next section of the program will run above this pseudocode. We are heading back into the loop in order to ask for a list of allergies.
+  # - If the user enters "sunshine" we should break to an additional while statement that evaluates the "allergies" variable. If this is the case, all other input is ignored (kind of like if the user's name is Drake Cula or Tu Fang).
+  # Once the loop is complete, the normal operation may resume!
