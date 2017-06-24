@@ -22,6 +22,7 @@
 puts "Welcome to Werewolf, Inc. We here at Werewolf, Inc. are excited to get to know you. Please take a moment to answer the following questions:"
 puts "What is your name?"
 vampname = gets.chomp
+vampname.downcase!
 
 puts "How old are you?"
 age = gets.chomp
@@ -33,17 +34,24 @@ puts "Our employee cafeteria serves some bomb garlic bread, and it just came out
 garliclover = gets.chomp
 garliclover.downcase!
 
-if garliclover.includes?("yes")
+if garliclover.include?("yes")
   garliclover = true
-elsif garliclover.includes?("no")
+elsif garliclover.include?("no")
   garliclover = false
 end
 
 puts "Finally, we here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our health. Would you like to enroll in our group health insurance policy?"
 insurance = gets.chomp
+insurance.downcase!
+
+if insurance.include?("yes")
+  insurance = true
+elsif insurance.include?("no")
+  insurance = false
+end
 
 # debug output dump to follow
-#p #{vampname}, #{age}, #{birthyear}, #{garliclover}, #{insurance}
+# puts "#{vampname}, #{age}, #{birthyear}, #{garliclover}, #{insurance}"
 
 # Once the initial variable answers are collected, we need to evaluate them against AND with each other.
 #   This will need to result in:
@@ -63,15 +71,18 @@ else
   correct_age = false
 end
 
-case vampire
+# debug dump to follow
+# p correct_age
+
+puts case
+when vampname === "drake cula" || vampname === "tu fang"
+  "Definitely a vampire."
 when correct_age && (garliclover || insurance)
   "Probably not a vampire."
-when !correct_age && (!garliclover || !insurance)
-  "Probably a vampire."
 when !correct_age && !garliclover && !insurance
   "Almost certainly a vampire."
-when vampname.includes?("Drake Cula") || vampname.includes?("Tu Fang")
-  "Definitely a vampire."
+when !correct_age && (!garliclover || !insurance)
+  "Probably a vampire."
 else
-  "Results inconclusive."
+  puts "Results inconclusive."
 end
