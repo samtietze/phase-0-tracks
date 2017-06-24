@@ -86,3 +86,7 @@ when !correct_age && (!garliclover || !insurance)
 else
   puts "Results inconclusive."
 end
+
+# Now we need to loop the entire survey in order to process multiple employees.
+# Creating a vairable at the beginning that will slowly count upwards should allow us to establish an until loop.
+#   - We will need to implement an additional user input value for the number of employees.
