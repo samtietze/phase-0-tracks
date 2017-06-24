@@ -109,8 +109,9 @@ while survey < employees.to_i
 #   - We will need to implement an additional user input value for the number of employees.
 
   survey += 1
+  puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 end
 
-# The next section of the program will run above this pseudocode. We are heading back into the loop in order to ask for a list of allergies.
+# The next release for this program will run above this pseudocode. We are heading back into the loop in order to ask for a list of allergies.
   # - If the user enters "sunshine" we should break to an additional while statement that evaluates the "allergies" variable. If this is the case, all other input is ignored (kind of like if the user's name is Drake Cula or Tu Fang).
   # Once the loop is complete, the normal operation may resume!
