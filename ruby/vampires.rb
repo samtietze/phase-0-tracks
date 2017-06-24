@@ -18,37 +18,41 @@
 # All of these questions will need to be assigned to variables in order to work with them later.
 #   - Some results will equate to a final "else" statement indicating the results were inconclusive.
 
+puts "How many employees are taking the survey today?"
+employees = gets.chomp
+survey = 0
 
-puts "Welcome to Werewolf, Inc. We here at Werewolf, Inc. are excited to get to know you. Please take a moment to answer the following questions:"
-puts "• What is your name?"
-vampname = gets.chomp
-vampname.downcase!
+while survey < employees.to_i
+  puts "Welcome to Werewolf, Inc. We here at Werewolf, Inc. are excited to get to know you. Please take a moment to answer the following questions:"
+  puts "• What is your name?"
+  vampname = gets.chomp
+  vampname.downcase!
 
-puts "• How old are you?"
-age = gets.chomp
+  puts "• How old are you?"
+  age = gets.chomp
 
-puts "• Specifically, what year were you born?"
-birthyear = gets.chomp
+  puts "• Specifically, what year were you born?"
+  birthyear = gets.chomp
 
-puts "• Our employee cafeteria serves some bomb garlic bread, and it just came out of the oven. Should we order some for you?"
-garliclover = gets.chomp
-garliclover.downcase!
+  puts "• Our employee cafeteria serves some bomb garlic bread, and it just came out of the oven. Should we order some for you?"
+  garliclover = gets.chomp
+  garliclover.downcase!
 
-if garliclover.include?("yes")
-  garliclover = true
-elsif garliclover.include?("no")
-  garliclover = false
-end
+  if garliclover.include?("yes")
+    garliclover = true
+  elsif garliclover.include?("no")
+    garliclover = false
+  end
 
-puts "• Finally, we here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our beating hearts. Would you like to enroll in our group health insurance policy?"
-insurance = gets.chomp
-insurance.downcase!
+  puts "• Finally, we here at Werewolf, Inc. want to make sure that all of our employees have access to the kind of healthcare that keeps us confident in our beating hearts. Would you like to enroll in our group health insurance policy?"
+  insurance = gets.chomp
+  insurance.downcase!
 
-if insurance.include?("yes")
-  insurance = true
-elsif insurance.include?("no")
-  insurance = false
-end
+  if insurance.include?("yes")
+    insurance = true
+  elsif insurance.include?("no")
+    insurance = false
+  end
 
 # debug output dump to follow
 # puts "#{vampname}, #{age}, #{birthyear}, #{garliclover}, #{insurance}"
@@ -62,29 +66,31 @@ end
 #   - If the employee's name matches some of the "known vampire" names, we will evaluate to "Definitely a vampire"
 # If none of these conditions match, we'll print "Results inconclusive"
 
-t = Time.new
-t.year # provides current year
-t.year - age.to_i == birthyear.to_i
-if t.year - age.to_i == birthyear.to_i
-  correct_age = true
-else
-  correct_age = false
-end
+  t = Time.new
+  t.year # provides current year
+  t.year - age.to_i == birthyear.to_i
+  if t.year - age.to_i == birthyear.to_i
+    correct_age = true
+  else
+    correct_age = false
+  end
 
 # debug dump to follow
 # p correct_age
 
-puts case
-when vampname === "drake cula" || vampname === "tu fang"
-  "Definitely a vampire."
-when correct_age && (garliclover || insurance)
-  "Probably not a vampire."
-when !correct_age && !garliclover && !insurance
-  "Almost certainly a vampire."
-when !correct_age && (!garliclover || !insurance)
-  "Probably a vampire."
-else
-  puts "Results inconclusive."
+  puts case
+  when vampname === "drake cula" || vampname === "tu fang"
+    "Definitely a vampire."
+  when correct_age && (garliclover || insurance)
+    "Probably not a vampire."
+  when !correct_age && !garliclover && !insurance
+    "Almost certainly a vampire."
+  when !correct_age && (!garliclover || !insurance)
+    "Probably a vampire."
+  else
+    puts "Results inconclusive."
+  end
+  survey += 1
 end
 
 # Now we need to loop the entire survey in order to process multiple employees.
