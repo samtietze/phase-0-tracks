@@ -10,7 +10,7 @@
 "zom".insert(1, "o")
 => “zoom”
 
-"enhance".rjust(8).ljust(12)
+"enhance".rjust(11).ljust(15)
 => "    enhance    "
 
 "Stop! You’re under arrest!".upcase
@@ -41,5 +41,5 @@
 # I don't yet know how this information is used in Ruby, but this is a mathematical concept that indicates sequence.
 # Ruby might be using this as a more linguistic-oriented form in order to automatically attach suffixes to dates and other counters (1 -> 1st, etc.).
 
-# "How many times does the letter 'a' appear in this string?".<???>
-# => 4
+"How many times does the letter 'a' appear in this string?".count("a")
+=> 4
