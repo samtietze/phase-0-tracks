@@ -39,7 +39,7 @@
 => 122
 # (What is the significance of the number 122 in relation to the character z?)
 # I don't yet know how this information is used in Ruby, but this is a mathematical concept that indicates sequence.
-# Ruby might be using this as a more linguistic-oriented form in order to automatically attach suffixes to dates and other counters (1 -> 1st, etc.).
+# Ruby might be using this as a more linguistic-oriented form in order to assist with attaching suffixes to dates and other counters (1 -> 1st, etc.).
 
 "How many times does the letter 'a' appear in this string?".count("a")
 => 4
