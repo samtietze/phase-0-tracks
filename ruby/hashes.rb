@@ -48,8 +48,11 @@ design_form = {
   age: client_age,
   children: child_count,
   decor_theme: "#{style}",
-  drapes: (nil if client_windows == false),
-  carpet: (nil if client_floors == false),
+  drapes: client_windows,
+  carpet: client_floors,
 }
-design_form.delete_if {|key, value| value.nil?}
+design_form.delete_if {|key, value| value == false}
+# This will erase the unnecessary values on
+# the form. For example, if the client's floors
+# are hardwood, there is no need for carpeting.
 p design_form
