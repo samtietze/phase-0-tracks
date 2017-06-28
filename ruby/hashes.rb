@@ -52,8 +52,4 @@ design_form = {
   carpet: (nil if client_floors == false),
 }
 design_form.delete_if {|key, value| value.nil?}
-# This will erase the drapes and carpet values
-# if the user indicates that the client has no
-# need for carpet due to hardwood floors, as well
-# as if they don't need drapes.
 p design_form
