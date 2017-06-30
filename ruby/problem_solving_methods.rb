@@ -80,26 +80,23 @@ def fib(n)
   second = 1
 
   if n == 0
-    nil
+    fib_array << nil
   elsif n == 1
     fib_array << 0
-  elsif n == 2
-    fib_array << 1
   else
     fib_array << 0
     fib_array << 1
-
-    (3..n).each do # Due to the zero index of
+    if n >= 3
+      (3..n).each do # Due to the zero index of
     # Ruby, we use 3 here to represent the
     # numbers after 0, 1, 1
 
-    next_number = (first + second)
-    first = second
-    second = next_number
+      next_number = (first + second)
+      first = second
+      fib_array << second = next_number
 
-    fib_array << second
+      end
     end
-
   end
   return fib_array
 
@@ -113,3 +110,23 @@ if fib(100).last == 218922995834555169026
 else
   p "Try again, my dude."
 end
+
+# Release 2
+# Sorting algorithm: bubble method
+# The bubble method iterates through an array of
+# integers and compares each set of two in order
+# It simply switches the two values based on value
+# and relies on a loop that ends once all values
+# match the value order.
+
+# Assume an array of eight integers, 1-8. We'll
+# use Ruby's RNG method to shuffle them before
+# the method starts its work.
+
+# The array works through pairs, which we can
+# pull using the each method, and then we'll
+# compare the two values using a simple <
+# operator.
+
+# The algorithm should be finished once the
+# final values are set.
