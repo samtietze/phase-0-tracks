@@ -59,6 +59,12 @@ def alias_manager(name)
     end
   end
 # remember to capitalize result
+
+  # Here we re-join the final name by bringing each
+  # letter from the array back into two separate
+  # words. This is then how we capitalize only
+  # the first letters of each string.
+
   # Capitalizing each item in turn requires
   # a proc object to be created. Thanks to
   # the & shorthand, this Symbol#to_proc is
@@ -68,10 +74,7 @@ def alias_manager(name)
   # last names. However, I don't know how to handle
   # the edge case of an Arabic suffix that remains
   # lower-case ("al-" or "ibn" or "bin").
-  # Here we re-join the final name by bringing each
-  # letter from the array back into two separate
-  # words. This is then how we capitalize only
-  # the first letters of each string.
+
   final = spy_name.join.split.map(&:capitalize)*(' ')
 end
 p alias_manager(real_name)
