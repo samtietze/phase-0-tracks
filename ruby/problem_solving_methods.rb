@@ -7,6 +7,10 @@
   # index items, we need to iterate through
   # and check each entry in the array.
 
+  # We found out later that "built-in methods"
+  # didn't mean we couldn't use Array#[], so
+  # this method searches through each item.
+
 
 test = [2, 4, 6, 8, 10, 12]
 
