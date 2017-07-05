@@ -124,9 +124,33 @@ end
 # the method starts its work.
 
 # The array works through pairs, which we can
-# pull using the each method, and then we'll
-# compare the two values using a simple <
+# pull using a loop, and then we'll
+# compare the two values using a simple lesser-than
 # operator.
 
-# The algorithm should be finished once the
-# final values are set.
+# The algorithm will finish naturally as long
+# as the sole 'if' statement
+
+def sorter(arr)
+
+return arr if arr.length <= 1
+
+not_sorted = true
+
+    while not_sorted
+     not_sorted = false
+     (arr.length-1).times do |i|
+        if arr[i] > arr[i+1]
+          arr[i], arr[i+1] = arr[i+1], arr[i]
+          not_sorted = true
+          p arr
+          p "swap occurred"
+        end
+       end
+     end
+    arr
+end
+
+test = [1, 2, 3, 4, 5, 6, 7, 8]
+shuffle_test = test.shuffle
+p sorter(shuffle_test)
