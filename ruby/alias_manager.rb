@@ -94,6 +94,7 @@ while real_name != "quit"
     name_list[:fake_name].push(final)
 
 
+
   elsif real_name == "quit"
     i = 0
     name_list[:entered_name].count.times do
