@@ -11,11 +11,13 @@
 # character level should occur in order to begin
 # altering those characters.
 
+puts "Please enter your first and last name:"
+real_name = gets.chomp.downcase
 # real_name = "Zellie Heinz Uruguay".downcase!
 
 def alias_manager(name)
   swap = name.split(' ').reverse.join(' ')
-  swap_chars = swap.downcase.chars
+  swap_chars = swap.chars
   # After getting this code working, I've gone back
   # and written a short method that should work for
   # both vowels and consonants. The same pseudo
@@ -103,3 +105,4 @@ while real_name != "quit"
     end
   end
 end
+p alias_manager(real_name)

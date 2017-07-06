@@ -115,3 +115,5 @@ end
 # The next release for this program will run above this pseudocode. We are heading back into the loop in order to ask for a list of allergies.
   # - If the user enters "sunshine" we should break to an additional while statement that evaluates the "allergies" variable. If this is the case, all other input is ignored (kind of like if the user's name is Drake Cula or Tu Fang).
   # Once the loop is complete, the normal operation may resume!
+
+# Code Review from Tyler
