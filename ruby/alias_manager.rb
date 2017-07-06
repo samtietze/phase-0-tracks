@@ -11,8 +11,6 @@
 # character level should occur in order to begin
 # altering those characters.
 
-puts "Please enter your first and last name:"
-real_name = gets.chomp.downcase
 # real_name = "Zellie Heinz Uruguay".downcase!
 
 def alias_manager(name)
@@ -78,4 +76,13 @@ def alias_manager(name)
 
   final = spy_name.join.split.map(&:capitalize)*(' ')
 end
-p alias_manager(real_name)
+# p alias_manager(real_name)
+
+real_name = ""
+while real_name != "quit"
+  puts "Please enter your first and last name:"
+  real_name = gets.chomp.downcase
+  if real_name != "quit"
+    p alias_manager(real_name)
+  end
+end
