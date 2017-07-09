@@ -33,7 +33,13 @@ item_check(zombie_apocalypse_supplies, search)
 # 3. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
 # leaving only 5, using #each.
-# ----
+
+# This is the most arbitrary way of removing items from the backpack...
+zombie_apocalypse_supplies.each do |remove|
+  if remove.length <= 8
+    zombie_apocalypse_supplies.pop
+  end
+end
 
 # 4. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
@@ -42,7 +48,15 @@ item_check(zombie_apocalypse_supplies, search)
 # documentation for Arrays.
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
                             "solar battery", "flashlight"]
-# ----
+# I don't think this is the answer you're looking for...
+# zombie_apocalypse_supplies.push(other_survivor_supplies).flatten.uniq
+
+#So here's this:
+other_survivor_supplies.each do |combine|
+  zombie_apocalypse_supplies << combine
+  zombie_apocalypse_supplies.uniq!
+end
+
 
 # Hash Drills
 
