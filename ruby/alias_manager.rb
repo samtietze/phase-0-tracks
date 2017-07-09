@@ -77,5 +77,32 @@ def alias_manager(name)
   # lower-case ("al-," "ibn," or "bin").
 
   final = spy_name.join.split.map(&:capitalize)*(' ')
+  p final
+end
+# p alias_manager(real_name)
+
+real_name = ""
+name_list = {
+  entered_name: [],
+  fake_name: []
+}
+while real_name != "quit"
+  puts "Please enter your first and last name:"
+  real_name = gets.chomp
+
+  if real_name.downcase != "quit"
+    final = alias_manager(real_name)
+    name_list[:entered_name].push(real_name)
+    name_list[:fake_name].push(final)
+
+
+
+  elsif real_name == "quit"
+    i = 0
+    name_list[:entered_name].count.times do
+      p name_list[:entered_name][i] + " is also known as " + name_list[:fake_name][i]
+      i += 1
+    end
+  end
 end
 p alias_manager(real_name)
