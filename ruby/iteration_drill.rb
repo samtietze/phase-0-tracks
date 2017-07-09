@@ -87,7 +87,10 @@ end
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # using #each, so they accurately reflect what year the animal went extinct.
-# ----
+
+extinct_animals.each do |animal, year|
+  extinct_animals.store(animal, year - 3)
+end
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Build a method  using #each that checks if an animal is in the hash and returns true/false.
@@ -97,10 +100,21 @@ end
 # "Dodo"
 # "Saiga Antelope"
 # Driver code example: is_extinct?(extinct_animals, "Andean Cat")
-# ----
+def is_extinct?(ary, query)
+  ary.each do |animal, year|
+    if animal == query
+      return "Yes"
+    end
+  end
+  return "No"
+end
+
+is_extinct?(extinct_animals, "Dodo")
+is_extinct?(extinct_animals, "Saiga Antelope")
+is_extinct?(extinct_animals, "Tasmanian Tiger")
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find a Ruby Hash built-in method that helps you accomplish this or build
 # your own method using #each
-# ----
+extinct_animals.shift
