@@ -24,11 +24,20 @@ class Santa
     @reindeer_ranking.insert(-1, "#{reindeer}")
   end
 
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
 end
 
-# santa = Santa.new("agender", "black")
-# santa.speak
-# santa.eat_milk_and_cookies("snickerdoodle")
+santa = Santa.new("agender", "black")
+santa.speak
+santa.eat_milk_and_cookies("snickerdoodle")
+santa.celebrate_birthday
+santa.get_mad_at("Rudolph")
+santa.gender = "male"
+p santa
+
 
 # santas = []
 # genders = ["male", "female", "agender", "bigender", "gender is a social construct", "N/A"]
