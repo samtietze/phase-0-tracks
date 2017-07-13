@@ -15,7 +15,7 @@ class Santa
     @gender = gender
     @ethnicity = ethnicity
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
+    @age = rand(140)
   end
 
   def celebrate_birthday
@@ -29,20 +29,20 @@ class Santa
 
 end
 
-santa = Santa.new("agender", "black")
-santa.speak
-santa.eat_milk_and_cookies("snickerdoodle")
-santa.celebrate_birthday
-santa.get_mad_at("Rudolph")
-santa.gender = "male"
+# santa = Santa.new("agender", "black")
+# santa.speak
+# santa.eat_milk_and_cookies("snickerdoodle")
+# santa.celebrate_birthday
+# santa.get_mad_at("Rudolph")
+# santa.gender = "male"
 
-p santa.age
-p santa.ethnicity
+# p santa.age
+# p santa.ethnicity
 
 
 # santas = []
-# genders = ["male", "female", "agender", "bigender", "gender is a social construct", "N/A"]
-# ethnicities = ["caucasion", "hispanic", "black", "Chinese", "Japanese", "Indian"]
+genders = ["male", "female", "agender", "bigender", "gender is a social construct", "N/A"]
+ethnicities = ["caucasion", "hispanic", "black", "Chinese", "Japanese", "Indian"]
 
 # genders.length.times do
 #   puts "Here comes Santa"
@@ -50,5 +50,14 @@ p santa.ethnicity
 #   santas.sample.speak
 # end
 # p santas
+
+
+10000.times do
+  p "Here comes Santa"
+  santa = Santa.new(genders.sample, ethnicities.sample)
+  p santa.age
+  p santa.ethnicity
+  p santa.gender
+end
 
 
