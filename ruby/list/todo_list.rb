@@ -12,4 +12,8 @@ class TodoList
     @list << task
   end
 
+  def delete_item(task)
+    @list.delete(task)
+  end
+
 end
