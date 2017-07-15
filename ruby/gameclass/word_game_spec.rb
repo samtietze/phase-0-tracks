@@ -12,12 +12,12 @@ describe WordGame do
   end
 
   it "replaces the challenge word with blanks" do
-    expect(hangman.display).to eq "________"
+    expect(hangman.game_display).to eq "________"
   end
 
   it "reveals a correctly guessed letter" do
     hangman.user_guess("o")
-    expect(hangman.display).to eq "_oo_____"
+    expect(hangman.game_display).to eq "_oo_____"
   end
 
   it "mocks the user for guessing incorrectly" do
@@ -43,7 +43,7 @@ describe WordGame do
   end
 
   it "displays a congratulatory message if the user guesses the word" do
-    hangman.display == hangman.reveal_answer
+    hangman.game_display == hangman.reveal_answer
     expect(hangman.you_win).to eq "Congratulations!"
   end
 
