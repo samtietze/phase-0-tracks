@@ -87,3 +87,43 @@ def pretty_list(list)
 end
 
 pretty_list(grocery_list)
+
+# Sam's Reflection:
+# What did you learn about pseudocode from working on this challenge?
+# Our guide's feedback was pretty helpful here, in
+# that we realized we were hunting down methods for
+# hashes or arrays while we were laying out our
+# pseudo, and by the time we got to actually writing
+# the methods, we ended up not even using those
+# methods. So our pseudo was prepping us for
+# strategies we didn't end up taking. It was a good
+# reminder that we should start by laying out what
+# we want to do, not really how we will accomplish
+# it.
+
+# What are the tradeoffs of using arrays and hashes for this challenge?
+# We found that arrays were necessary data structures
+# in some situations, but ultimately all of our
+# methods pushed out hashes. I'm sure there are other
+# ways to write this code, but the only time we used
+# arrays was due to needing .split(" ").
+
+# What does a method return?
+# Whatever we tell it to return.
+
+# What kind of things can you pass into methods as arguments?
+# Everything?
+
+# How can you pass information between methods?
+# If the return value of a method is something you
+# need in another method, you can call multiple
+# methods, or you can pass a method in as an
+# argument for another method. You can even call
+# a method from within another method.
+
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+# We didn't end up nesting any methods, though
+# it strikes me as something that could be done
+# to streamline the process in some situations.
+# Looking back at the methods, I'm really not
+# sure where I'd even nest one!
