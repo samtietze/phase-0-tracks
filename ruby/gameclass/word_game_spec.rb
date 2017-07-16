@@ -37,7 +37,7 @@ describe WordGame do
 
   it "ends the game if the number of guesses reaches 0" do
     hangman.guesses_left = 0
-    expect(hangman.game_over).to be true
+    expect(hangman.is_game_over?).to be true
   end
 
   it "displays a congratulatory message if the user guesses the word" do
