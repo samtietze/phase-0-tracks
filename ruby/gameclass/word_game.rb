@@ -53,6 +53,7 @@ class WordGame
         end
         @list_of_guesses << letter
         @guesses_left -= 1
+        "Good show"
       elsif !@word.include?(letter)
         @guesses_left -= 1
         @list_of_guesses << letter
@@ -77,11 +78,11 @@ class WordGame
 
 end
 
-hangman = WordGame.new("football")
-p hangman.word
-p hangman.total_guesses
-p hangman.game_display
-p hangman.is_game_over?
+# hangman = WordGame.new("football")
+# p hangman.word
+# p hangman.total_guesses
+# p hangman.game_display
+# p hangman.is_game_over?
 
 # p hangman.user_guess("o")
 # p hangman.game_display
@@ -99,18 +100,18 @@ p hangman.is_game_over?
 
 # user interface
 
-# puts "Hello, human. I bet you think you're smart. Let's find out."
-# puts "First, have your smarter friend type in a word:"
-# challenge = gets.chomp.downcase
-# hangman = WordGame.new(challenge)
+puts "Hello, human. I bet you think you're smart. Let's find out."
+puts "First, have your smarter friend type in a word:"
+challenge = gets.chomp.downcase
+40.times {puts ()}
+hangman = WordGame.new(challenge)
 
-# puts "You have #{hangman.total_guesses} turns to figure out what word your friend entered. Don't worry, if you guess the same letter twice, it won't count against you. Though we will make fun of you, I'm sure."
-# p hangman.game_display
-# p hangman.game_over
+puts "You have #{hangman.total_guesses} turns to figure out what word your friend entered. Don't worry, if you guess the same letter twice, it won't count against you. Though we will make fun of you, I'm sure."
+p hangman.game_display
 
-# while hangman.game_over = false
-#   puts "Please enter a letter:"
-#   guess = gets.chomp.downcase
-#   p hangman.user_guess(guess)
-#   p hangman.game_display
-# end
+until hangman.is_game_over?
+  puts "Please enter a letter:"
+  guess = gets.chomp.downcase
+  p hangman.user_guess(guess)
+  p hangman.game_display, "You have #{hangman.guesses_left} guesses left. Tick tock."
+end
