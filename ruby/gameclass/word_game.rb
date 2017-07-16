@@ -81,6 +81,8 @@ class WordGame
 
 end
 
+# Testing
+
 # hangman = WordGame.new("football")
 # p hangman.word
 # p hangman.total_guesses
