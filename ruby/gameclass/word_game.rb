@@ -42,7 +42,7 @@ class WordGame
     # Check against repeat entries
     if !@list_of_guesses.include?(letter)
 
-      if @word.include?(letter)
+      if @hidden_word.include?(letter)
         i = 0
         # Loop due to repeating letters in a word
         @hidden_word.each do
@@ -116,6 +116,7 @@ until hangman.is_game_over?
   2.times {puts ()}
   p hangman.game_display, "You have #{hangman.guesses_left} guesses left. Tick tock."
 end
+2.times {puts ()}
 
-p hangman.you_win if !hangman.is_game_over?
-p "You lose. Told you your friend was smarter than you." if hangman.is_game_over?
+puts hangman.you_win, "The word was #{hangman.word}." if !hangman.is_game_over?
+puts "You lose. Told you your friend was smarter than you. Final game:", hangman.game_display, "The word was #{hangman.word}" if hangman.is_game_over?
