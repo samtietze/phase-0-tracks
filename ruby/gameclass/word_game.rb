@@ -23,17 +23,15 @@
 # message instead.
 
 class WordGame
-  attr_reader :total_guesses
+
   attr_accessor :word, :game_display, :guesses_left, :game_over, :list_of_guesses
 
 
   def initialize(word)
     @word = word
-    @total_guesses = word.length + 3
-    # @game_display = word.length.times {print "_ "} This won't work. Need an array.
     @hidden_word = word.split("")
     @game_display = @hidden_word.map { |letter| letter = "_"}.join(" ")
-    @guesses_left = @total_guesses
+    @guesses_left = word.length + 3
     @game_over = false
     @list_of_guesses = []
   end
@@ -104,7 +102,7 @@ challenge = gets.chomp.downcase
 40.times {puts ()}
 hangman = WordGame.new(challenge)
 
-puts "You have #{hangman.total_guesses} turns to figure out what word your friend entered. Don't worry, if you guess the same letter twice, it won't count against you. Though we will make fun of you, I'm sure."
+puts "You have #{hangman.guesses_left} turns to figure out what word your friend entered. Don't worry, if you guess the same letter twice, it won't count against you. Though we will make fun of you, I'm sure."
 p hangman.game_display
 
 until hangman.is_game_over?
