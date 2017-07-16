@@ -23,5 +23,35 @@
 # message instead.
 
 class WordGame
+  attr_reader :total_guesses
+  attr_accessor :word, :game_display, :guesses_left
+
+
+  def initialize(word)
+    @word = word
+    @total_guesses = word.length + 5
+    # @game_display = word.length.times {print "_ "} This won't work. Need an array.
+    @hidden_word = word.split("")
+    @game_display = @hidden_word.map { |letter| letter = "_"}.join(" ")
+    @guesses_left = @total_guesses
+  end
+
+  def user_guess(letter)
+    if @word.include?(letter)
+      i = 0
+      @hidden_word.each do
+        if @hidden_word[i] == letter
+          @game_display[i * 2] = letter
+          i += 1
+        else
+          i += 1
+        end
+      end
+      @guesses_left -= 1
+    elsif !@word.include?(letter)
+      @guesses_left -= 1
+      "You must be daft"
+    end
+  end
 
 end

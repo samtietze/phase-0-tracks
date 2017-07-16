@@ -4,7 +4,7 @@ describe WordGame do
   let(:hangman) { WordGame.new("football")}
 
   it "stores the challenge word given by the first user" do
-    expect(hangman.reveal_answer).to eq "football"
+    expect(hangman.word).to eq "football"
   end
 
   it "revises the number of guesses based on the challenge word length" do
@@ -12,17 +12,16 @@ describe WordGame do
   end
 
   it "replaces the challenge word with blanks" do
-    expect(hangman.game_display).to eq "________"
+    expect(hangman.game_display).to eq "_ _ _ _ _ _ _ _"
   end
 
   it "reveals a correctly guessed letter" do
     hangman.user_guess("o")
-    expect(hangman.game_display).to eq "_oo_____"
+    expect(hangman.game_display).to eq "_ o o _ _ _ _ _"
   end
 
   it "mocks the user for guessing incorrectly" do
-    hangman.user_guess("z")
-    expect(hangman.nope).to eq "You must be daft"
+    expect(hangman.user_guess("z")).to eq "You must be daft"
   end
 
   it "counts guesses down" do
