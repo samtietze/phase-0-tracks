@@ -29,7 +29,7 @@ class WordGame
 
   def initialize(word)
     @word = word
-    @total_guesses = word.length + 5
+    @total_guesses = word.length + 3
     # @game_display = word.length.times {print "_ "} This won't work. Need an array.
     @hidden_word = word.split("")
     @game_display = @hidden_word.map { |letter| letter = "_"}.join(" ")
@@ -65,7 +65,7 @@ class WordGame
   end
 
   def game_over
-    if @guesses_left = 0
+    if @guesses_left == 0
       @game_over = true
     end
   end
@@ -75,3 +75,23 @@ class WordGame
   end
 
 end
+
+# hangman = WordGame.new("football")
+# p hangman.word
+# p hangman.total_guesses
+# p hangman.game_display
+
+# p hangman.user_guess("o")
+# p hangman.game_display
+# p hangman.guesses_left
+# p hangman.user_guess("a")
+# p hangman.game_display
+# p hangman.guesses_left
+# p hangman.user_guess("c")
+# p hangman.game_display
+# p hangman.guesses_left
+# p hangman.user_guess("c")
+# p hangman.user_guess("d")
+
+# user interface
+

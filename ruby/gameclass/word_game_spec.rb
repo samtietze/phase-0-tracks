@@ -8,7 +8,7 @@ describe WordGame do
   end
 
   it "revises the number of guesses based on the challenge word length" do
-    expect(hangman.total_guesses).to eq 13
+    expect(hangman.total_guesses).to eq 11
   end
 
   it "replaces the challenge word with blanks" do
@@ -26,13 +26,13 @@ describe WordGame do
 
   it "counts guesses down" do
     hangman.user_guess("z")
-    expect(hangman.guesses_left).to eq 12
+    expect(hangman.guesses_left).to eq 10
   end
 
   it "doesn't count down for repeated guesses" do
     hangman.user_guess("z")
     hangman.user_guess("z")
-    expect(hangman.guesses_left).to eq 12
+    expect(hangman.guesses_left).to eq 10
   end
 
   it "ends the game if the number of guesses reaches 0" do
