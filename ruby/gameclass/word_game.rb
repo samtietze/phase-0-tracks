@@ -24,7 +24,7 @@
 
 class WordGame
   attr_reader :total_guesses
-  attr_accessor :word, :game_display, :guesses_left
+  attr_accessor :word, :game_display, :guesses_left, :game_over, :list_of_guesses
 
 
   def initialize(word)
@@ -34,24 +34,44 @@ class WordGame
     @hidden_word = word.split("")
     @game_display = @hidden_word.map { |letter| letter = "_"}.join(" ")
     @guesses_left = @total_guesses
+    @game_over = false
+    @list_of_guesses = []
   end
 
   def user_guess(letter)
-    if @word.include?(letter)
-      i = 0
-      @hidden_word.each do
-        if @hidden_word[i] == letter
-          @game_display[i * 2] = letter
-          i += 1
-        else
-          i += 1
+    if !@list_of_guesses.include?(letter)
+
+      if @word.include?(letter)
+        i = 0
+        @hidden_word.each do
+          if @hidden_word[i] == letter
+            @game_display[i * 2] = letter
+            i += 1
+          else
+            i += 1
+          end
         end
+        @list_of_guesses << letter
+        @guesses_left -= 1
+      elsif !@word.include?(letter)
+        @guesses_left -= 1
+        @list_of_guesses << letter
+        "You must be daft"
       end
-      @guesses_left -= 1
-    elsif !@word.include?(letter)
-      @guesses_left -= 1
-      "You must be daft"
+
+    elsif @list_of_guesses.include?(letter)
+      "You already tried that letter, human."
     end
+  end
+
+  def game_over
+    if @guesses_left = 0
+      @game_over = true
+    end
+  end
+
+  def you_win
+    "Congratulations!"
   end
 
 end

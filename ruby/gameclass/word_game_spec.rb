@@ -31,7 +31,6 @@ describe WordGame do
 
   it "doesn't count down for repeated guesses" do
     hangman.user_guess("z")
-    hangman.guesses_left = 12
     hangman.user_guess("z")
     expect(hangman.guesses_left).to eq 12
   end
@@ -42,7 +41,7 @@ describe WordGame do
   end
 
   it "displays a congratulatory message if the user guesses the word" do
-    hangman.game_display == hangman.reveal_answer
+    hangman.game_display == hangman.word
     expect(hangman.you_win).to eq "Congratulations!"
   end
 
