@@ -39,10 +39,12 @@ class WordGame
   end
 
   def user_guess(letter)
+    # Check against repeat entries
     if !@list_of_guesses.include?(letter)
 
       if @word.include?(letter)
         i = 0
+        # Loop due to repeating letters in a word
         @hidden_word.each do
           if @hidden_word[i] == letter
             @game_display[i * 2] = letter
@@ -87,15 +89,11 @@ end
 # p hangman.user_guess("o")
 # p hangman.game_display
 # p hangman.guesses_left
-# p hangman.user_guess("a")
-# p hangman.game_display
-# p hangman.guesses_left
 # p hangman.user_guess("c")
-# p hangman.game_display
-# p hangman.guesses_left
 # p hangman.user_guess("c")
 # p hangman.user_guess("d")
-
+# p hangman.game_display
+# p hangman.guesses_left
 
 
 # user interface
@@ -113,5 +111,11 @@ until hangman.is_game_over?
   puts "Please enter a letter:"
   guess = gets.chomp.downcase
   p hangman.user_guess(guess)
+  break if hangman.game_display.delete(" ") == hangman.word
+  break if hangman.is_game_over?
+  2.times {puts ()}
   p hangman.game_display, "You have #{hangman.guesses_left} guesses left. Tick tock."
 end
+
+p hangman.you_win if !hangman.is_game_over?
+p "You lose. Told you your friend was smarter than you." if hangman.is_game_over?
