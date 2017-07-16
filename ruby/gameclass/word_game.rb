@@ -39,7 +39,10 @@ class WordGame
   def user_guess(letter)
     # Check against repeat entries
     if !@list_of_guesses.include?(letter)
-
+      # Instead of checking against @word, I'm
+      # checking @hidden_word because if the
+      # user returns a blank entry it is
+      # somehow counted against them!
       if @hidden_word.include?(letter)
         i = 0
         # Loop due to repeating letters in a word
