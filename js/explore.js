@@ -9,8 +9,8 @@
 var str = "hello";
 function reverse(string) {
   var reverseString = ""
-  for (i = str.length - 1; i >= 0; i--) {
-    reverseString += str.charAt(i);
+  for (i = string.length - 1; i >= 0; i--) {
+    reverseString += string.charAt(i);
     console.log(reverseString);
   }
 }
