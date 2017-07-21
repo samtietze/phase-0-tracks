@@ -23,8 +23,11 @@ function alsoReverse(string) {
 console.log(alsoReverse(str));
 
 
-var storedString = reverse("Reversal");
+var storedString = reverse("First");
 storedString;
-var alsoStored = alsoReverse("Reversal");
+var alsoStored = alsoReverse("Second");
 console.log(alsoStored);
 
+if (1 == 1) {
+  console.log(alsoStored);
+}
