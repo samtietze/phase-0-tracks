@@ -18,6 +18,13 @@ reverse(str);
 
 function alsoReverse(string) {
   var finalString = string.split("").reverse().join("");
-  console.log(finalString);
+  return finalString;
 }
-alsoReverse(str);
+console.log(alsoReverse(str));
+
+
+var storedString = reverse("Reversal");
+storedString;
+var alsoStored = alsoReverse("Reversal");
+console.log(alsoStored);
+
