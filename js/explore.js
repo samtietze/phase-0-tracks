@@ -15,3 +15,9 @@ function reverse(string) {
   }
 }
 reverse(str);
+
+function alsoReverse(string) {
+  var finalString = string.split("").reverse().join("");
+  console.log(finalString);
+}
+alsoReverse(str);
