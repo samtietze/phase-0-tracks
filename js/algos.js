@@ -94,3 +94,28 @@ function objectCheckerTwo(obj1, obj2) {
 }
 
 console.log(objectCheckerTwo(object1, object2));
+
+// Release 2
+
+// Function: creating all sorts of random lengths of
+// items.
+// Input: one integer
+// Output: an array of strings as long as the input
+// integer. Each item of words should be a random
+// length between 1 and 10.
+// Steps: Gather the INDEX of an array of the alphabet
+// and use a RANDOM number between 1 and 26 to return
+// that letter.
+// Set the LENGTH of the string between 1 and 10 to
+// meet the other requirement of this challenge.
+
+function arrayCreator(arrayLength) {
+  var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var wordLength = Math.random(1, 10);
+  var randomArray = [];
+  for (i = 0; i < arrayLength; i++) {
+
+  }
+  return randomArray;
+}
+
