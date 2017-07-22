@@ -34,3 +34,48 @@ function longestString(array) {
 console.log(longestString(stringArray));
 
 
+var anchor = stringArray[0];
+stringArray.forEach(function(string) {
+  if (anchor.length < string.length) {
+    anchor = string;
+  }
+});
+
+console.log(anchor);
+
+// Release 1
+// Compare two objects together in order to check if
+// they share at least one key-value pair.
+// Since STRINGS and INTEGERS can be compared to each
+// other and evaluate as true or false, it may be best
+// to remove the element from the object to test it.
+// However, in creating an array of the values in an
+// object, it isn't _technically_ comparing the objects
+// for having equivalent key-value pairs. So maybe not.
+
+// Function input: two OBJECTS
+// Function output: boolean true/false
+// Steps: 1. Turn the key-value pairs into an ARRAY.
+// 2. Match the KEYS with each other. IF the keys match
+// then COMPARE the VALUES.
+
+var object1 = {name: "Steven", age: 54};
+var object2 = {name: "Tamir", age: 54};
+
+var truthyness = false;
+function objectChecker(obj1, obj2, checker) {
+  checker = false;
+  for (i = 0; i < Object.keys(obj1).length; i++) {
+    if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
+      if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
+        checker = true;
+      } else {
+        checker = false;
+      }
+    } else {
+      checker = false;
+    }
+  }
+  return checker;
+}
+
