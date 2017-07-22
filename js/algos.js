@@ -62,10 +62,15 @@ console.log(anchor);
 var object1 = {name: "Steven", age: 54};
 var object2 = {name: "Tamir", age: 54};
 function objectChecker(obj1, obj2) {
-  var truthyness = false
-  for (i = 0; i < Object.keys(obj1).length; i++) {
-    if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
-      if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
+  var truthyness = false;
+  var obj1keys = Object.keys(obj1);
+  var obj2keys = Object.keys(obj2);
+  var obj1vals = Object.values(obj1);
+  var obj2vals = Object.values(obj2);
+
+  for (i = 0; i < obj1keys.length; i++) {
+    if (obj1keys[i] === obj2keys[i]) {
+      if (obj1vals[i] === obj2vals[i]) {
         truthyness = true;
       }
     }
@@ -81,11 +86,17 @@ console.log(objectChecker(object3, object4));
 
 // Using the Array#forEach method to iterate through
 // this problem:
+
 function objectCheckerTwo(obj1, obj2) {
   var checker = false;
-  Object.keys(obj1).forEach(function(i) {
-    if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
-      if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
+  var obj1keys = Object.keys(obj1);
+  var obj2keys = Object.keys(obj2);
+  var obj1vals = Object.values(obj1);
+  var obj2vals = Object.values(obj2);
+
+  obj1keys.forEach(function(element, index) {
+    if (obj1keys[index] === obj2keys[index]) {
+      if (obj1vals[index] === obj2vals[index]) {
         checker = true;
       }
     }
@@ -94,6 +105,9 @@ function objectCheckerTwo(obj1, obj2) {
 }
 
 console.log(objectCheckerTwo(object1, object2));
+console.log(objectCheckerTwo(object3, object4));
+
+
 
 // Release 2
 
