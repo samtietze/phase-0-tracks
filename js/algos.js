@@ -74,3 +74,7 @@ function objectChecker(obj1, obj2) {
 }
 
 console.log(objectChecker(object1, object2));
+
+var object3 = {animal: "Dog", legs: 4};
+var object4 = {animal: "Dog", legs: 3};
+console.log(objectChecker(object3, object4));
