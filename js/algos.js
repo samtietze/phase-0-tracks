@@ -78,3 +78,19 @@ console.log(objectChecker(object1, object2));
 var object3 = {animal: "Dog", legs: 4};
 var object4 = {animal: "Dog", legs: 3};
 console.log(objectChecker(object3, object4));
+
+// Using the Array#forEach method to iterate through
+// this problem:
+function objectCheckerTwo(obj1, obj2) {
+  var checker = false;
+  Object.keys(obj1).forEach(function(i) {
+    if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
+      if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
+        checker = true;
+      }
+    }
+  });
+  return checker;
+}
+
+console.log(objectCheckerTwo(object1, object2));
