@@ -67,11 +67,7 @@ function objectChecker(obj1, obj2) {
     if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
       if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
         truthyness = true;
-      } else {
-        truthyness = false;
       }
-    } else {
-      truthyness = false;
     }
   }
   return truthyness;
