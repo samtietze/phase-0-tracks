@@ -131,3 +131,19 @@ function arrayCreator(arrayLength) {
 
 console.log(arrayCreator(4));
 console.log(arrayCreator(9));
+
+
+// Now use driver code to loop 10 times over the following:
+// generate an array
+// print the array
+// feed the array into Release 0's longestString function
+// print the results
+// Getting errors and loops when re-using counter variables.
+// This loop created using "x" now.
+
+for (x = 0; x < 10; x++) {
+  var arrayLength = randomInteger(1,10);
+  var randomArray = arrayCreator(arrayLength);
+  console.log(randomArray);
+  console.log(longestString(randomArray));
+}
