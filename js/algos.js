@@ -61,21 +61,20 @@ console.log(anchor);
 
 var object1 = {name: "Steven", age: 54};
 var object2 = {name: "Tamir", age: 54};
-
-var truthyness = false;
-function objectChecker(obj1, obj2, checker) {
-  checker = false;
+function objectChecker(obj1, obj2) {
+  var truthyness = false
   for (i = 0; i < Object.keys(obj1).length; i++) {
     if (Object.keys(obj1)[i] === Object.keys(obj2)[i]) {
       if (Object.values(obj1)[i] === Object.values(obj2)[i]) {
-        checker = true;
+        truthyness = true;
       } else {
-        checker = false;
+        truthyness = false;
       }
     } else {
-      checker = false;
+      truthyness = false;
     }
   }
-  return checker;
+  return truthyness;
 }
 
+console.log(objectChecker(object1, object2));
