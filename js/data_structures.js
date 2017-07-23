@@ -29,7 +29,10 @@ console.log(addName("Lenny", names));
 addColor("super sparkle", colors);
 addName("Harry Caray", names);
 horseObject = {}
-for(i = 0; i <names.length; i++) {
-  horseObject[names[i]] = colors[i];
+function makeObject(object, array1, array2) {
+  for(i = 0; i <array1.length; i++) {
+    object[array1[i]] = array2[i];
+  }
+  return object;
 }
-console.log(horseObject);
+console.log(makeObject(horseObject, names, colors));
