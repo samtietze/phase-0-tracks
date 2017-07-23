@@ -26,13 +26,46 @@ console.log(addName("Lenny", names));
 
 // console.log(horseObject);
 
+// Release 1
+
 addColor("super sparkle", colors);
 addName("Harry Caray", names);
 horseObject = {}
 function makeObject(object, array1, array2) {
-  for(i = 0; i <array1.length; i++) {
+  for(i = 0; i < array1.length; i++) {
     object[array1[i]] = array2[i];
   }
   return object;
 }
 console.log(makeObject(horseObject, names, colors));
+
+// Release 2
+// Write a constructor function for a car with a handful of
+// properties. One of the properties needs to be a function.
+//
+
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.honk = function() {console.log("Horn horn HORN")};
+
+}
+var ford = new Car("Ford", "Model T", 1917);
+console.log("The next car in line is a " + ford.make + " " + ford.model + " from " + ford.year + ".");
+console.log("This " + ford.model + " can honk:");
+ford.honk();
+console.log("----");
+
+var chevy = new Car("Chevrolet", "Impala", 1967);
+console.log("And the second car is a " + chevy.make + " " + chevy.model + " from " + chevy.year + ".");
+console.log("This " + chevy.model + " can also honk:");
+chevy.honk();
+console.log("----");
+
+var crashedCar = new Car("Hyundai", "Elantra", 2005);
+console.log("This " + crashedCar.make + " " + crashedCar.model + " no longer does anything good. It has hit a wall.");
+crashedCar.brokenHorn = function() {console.log("Hrrrrrrn")};
+console.log("This " + crashedCar.model + " can't even make a noise:");
+crashedCar.brokenHorn();
+console.log("----");
