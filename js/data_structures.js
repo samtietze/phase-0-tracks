@@ -69,3 +69,18 @@ crashedCar.brokenHorn = function() {console.log("Hrrrrrrn")};
 console.log("This " + crashedCar.model + " can't even make a noise:");
 crashedCar.brokenHorn();
 console.log("----");
+
+// Release 3
+// Simply experimentation with looping thru an object:
+console.log(chevy);
+console.log(Object.keys(chevy).length);
+for (n = 0; n < Object.keys(chevy).length; n++) {
+  console.log(Object.keys(chevy)[n]);
+  console.log(Object.values(chevy)[n]);
+}
+
+console.log(Object.entries(ford));
+console.log(Object.entries(ford)[1][1]);
+console.log(Object.entries(chevy)[1]);
+console.log(Object.is(Object.entries(ford)[1][0], Object.entries(chevy)[1][0])); // This would have made 7.3 a lot easier...
+
