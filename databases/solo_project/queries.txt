@@ -17,3 +17,111 @@ Delete an item that meets some condition (you can choose a condition that makes 
 DELETE FROM characters WHERE name="Talisa Stark";
 SELECT characters.name FROM characters JOIN house ON characters.house_id = house.id WHERE house.name="House Stark";
 
+Release 3, JOIN queries:
+
+SELECT characters.name, house.name FROM characters LEFT OUTER JOIN house ON characters.house_id = house.id;
+
+SELECT characters.name, characters.alive, house.name FROM characters LEFT OUTER JOIN house ON characters.house_id = house.id;
+
+This returns the same thing whether it's CROSS JOIN or LEFT OUTER JOIN? I don't get it.
+SELECT characters.season_intro, house.name FROM characters CROSS JOIN house ON characters.house_id = house.id;
+1|House Baratheon
+2|House Baratheon
+1|House Baratheon
+1|House Baratheon
+1|House Baratheon
+1|House Baratheon
+1|House Stark
+1|House Stark
+1|House Stark
+1|House Stark
+1|House Stark
+1|House Stark
+1|House Stark
+6|House Stark
+6|House Stark
+1|House Stark
+1|House Stark
+5|House Martell
+4|House Martell
+4|House Martell
+5|House Martell
+5|House Martell
+5|House Martell
+5|House Martell
+1|House Lannister
+1|House Lannister
+1|House Lannister
+1|House Lannister
+1|House Lannister
+1|House Lannister
+3|House Lannister
+3|House Lannister
+3|House Tyrell
+4|House Tyrell
+2|House Tyrell
+1|House Tyrell
+2|House Greyjoy
+6|House Greyjoy
+6|House Greyjoy
+2|House Greyjoy
+1|House Greyjoy
+1|House Targaryan
+6|House Targaryan
+1|House Targaryan
+1|House Targaryan
+1|House Arryn
+1|House Arryn
+1|House Arryn
+
+This returns the same whether it's INNER JOIN or LEFT OUTER JOIN. Once again, I don't get it.
+SELECT characters.name, characters.alive, house.name FROM characters INNER JOIN house ON characters.house_id = house.id;
+
+Robert Baratheon|false|House Baratheon
+Stannis Baratheon|false|House Baratheon
+Renly Baratheon|false|House Baratheon
+Joffrey Baratheon|false|House Baratheon
+Tommen Baratheon|false|House Baratheon
+Myrcella Baratheon|false|House Baratheon
+Catelyn Stark|false|House Stark
+Eddard Stark|false|House Stark
+Robb Stark|false|House Stark
+Sansa Stark|true|House Stark
+Arya Stark|true|House Stark
+Bran Stark|true|House Stark
+Rickon Stark|false|House Stark
+Rickard Stark|false|House Stark
+Lyanna Stark|false|House Stark
+Jon Snow|true|House Stark
+Benjen Stark|true|House Stark
+Doran Martell|false|House Martell
+Oberyn Martell|false|House Martell
+Ellaria Sand|true|House Martell
+Trystane Martell|false|House Martell
+Obara Sand|false|House Martell
+Nymeria Sand|false|House Martell
+Tyene Sand|true|House Martell
+Tywin Lannister|false|House Lannister
+Kevan Lannister|false|House Lannister
+Cersei Lannister|true|House Lannister
+Jaime Lannister|true|House Lannister
+Tyrion Lannister|true|House Lannister
+Lancel Lannister|false|House Lannister
+Martyn Lannister|false|House Lannister
+Willem Lannister|false|House Lannister
+Olenna Tyrell|true|House Tyrell
+Mace Tyrell|false|House Tyrell
+Margaery Tyrell|false|House Tyrell
+Loras Tyrell|false|House Tyrell
+Balon Greyjoy|false|House Greyjoy
+Euron Greyjoy|true|House Greyjoy
+Aeron Greyjoy|true|House Greyjoy
+Yara Greyjoy|true|House Greyjoy
+Theon Greyjoy|true|House Greyjoy
+Aemon Targaryan|false|House Targaryan
+Aerys II Targaryan|false|House Targaryan
+Viserys III Targaryan|false|House Targaryan
+Daenerys Targaryan|true|House Targaryan
+Jon Arryn|false|House Arryn
+Lysa Tully|false|House Arryn
+Robin Arryn|true|House Arryn
