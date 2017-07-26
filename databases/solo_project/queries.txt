@@ -1,0 +1,19 @@
+Queries:
+
+Display the information in one table (either table is fine).
+SELECT * FROM characters;
+
+Update an item that meets some condition (you can choose a condition that makes sense).
+UPDATE characters SET alive="false" WHERE name="Jon Snow";
+UPDATE characters SET alive="true" WHERE name="Jon Snow";
+
+Display the information in both tables using one query.
+SELECT * FROM characters, house;
+
+Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+SELECT characters.name, house.name FROM characters JOIN house ON characters.house_id = house.id WHERE alive="true";
+
+Delete an item that meets some condition (you can choose a condition that makes sense).
+DELETE FROM characters WHERE name="Talisa Stark";
+SELECT characters.name FROM characters JOIN house ON characters.house_id = house.id WHERE house.name="House Stark";
+
