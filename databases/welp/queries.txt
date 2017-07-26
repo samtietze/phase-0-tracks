@@ -1,0 +1,23 @@
+Join three tables:
+SELECT * FROM reviews, users, businesses WHERE reviews.user_id = users.id AND reviews.business_id = businesses.id;
+
+User's Name, Business Name, Star rating, Comment
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id;
+
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|This place married me quickly
+Mandy|Kaling|Grundy Hollow Wedding Chapel|1|I just sobered up. What have I done?
+Angela|Jolie|Grundy Hollow Wedding Chapel|1|The chapel was very dirty.
+Bradford|Pitt|Amir's Towing|5|Amir was very friendly
+Angela|Jolie|Amir's Towing|4|Amir smoked in front of me.
+Stephen|Wonder|Amir's Towing|1|Amir hit my car, and then towed it.
+Angela|Jolie|The Beagle Night Club|1|My drinks were water.
+Bradford|Pitt|The Beagle Night Club|5|My waters came quickly
+Mandy|Kaling|Lotus Yoga|3|I don't know any of these positions
+Stephen|Wonder|Lotus Yoga|5|The instructor is nice.
+
+View the info from all three tables for just one business:
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id WHERE businesses.name="Grundy Hollow Wedding Chapel";
+
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|This place married me quickly
+Mandy|Kaling|Grundy Hollow Wedding Chapel|1|I just sobered up. What have I done?
+Angela|Jolie|Grundy Hollow Wedding Chapel|1|The chapel was very dirty.
