@@ -1,6 +1,18 @@
 Join three tables:
 SELECT * FROM reviews, users, businesses WHERE reviews.user_id = users.id AND reviews.business_id = businesses.id;
 
+1|5|This place married me quickly|1|1|1|Bradford|Pitt|1|Grundy Hollow Wedding Chapel
+2|1|I just sobered up. What have I done?|1|2|2|Mandy|Kaling|1|Grundy Hollow Wedding Chapel
+3|1|The chapel was very dirty.|1|3|3|Angela|Jolie|1|Grundy Hollow Wedding Chapel
+4|5|Amir was very friendly|2|1|1|Bradford|Pitt|2|Amir's Towing
+5|4|Amir smoked in front of me.|2|3|3|Angela|Jolie|2|Amir's Towing
+6|1|Amir hit my car, and then towed it.|2|4|4|Stephen|Wonder|2|Amir's Towing
+7|1|My drinks were water.|3|3|3|Angela|Jolie|3|The Beagle Night Club
+8|5|My waters came quickly|3|1|1|Bradford|Pitt|3|The Beagle Night Club
+9|3|I don't know any of these positions|4|2|2|Mandy|Kaling|4|Lotus Yoga
+10|5|The instructor is nice.|4|4|4|Stephen|Wonder|4|Lotus Yoga
+
+
 User's Name, Business Name, Star rating, Comment
 SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id;
 
