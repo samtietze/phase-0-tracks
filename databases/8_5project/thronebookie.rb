@@ -45,7 +45,21 @@ thronesdb.execute(create_characters_table)
 thronesdb.execute(create_houses_table)
 thronesdb.execute(create_strongholds_table)
 
-thronesdb.execute("INSERT INTO characters (name, first_seen, allegiance_value, allegiance_id, alive) VALUES ('Robert Baratheon', 'Season 1', 0, 1, 'false')")
+# thronesdb.execute("INSERT OR IGNORE INTO characters (name, first_seen, allegiance_value, allegiance_id, alive) VALUES ('Robert Baratheon', 'Season 1', 0, 1, 'false')")
+
+# Now a method that will do this repeatedly for entered
+# character data.
+# INPUT: the database, character name, character's debut,
+# the 'value' of the character as an integer, the house
+# the character is allied with, and whether the character
+# is even still alive:
+
+def insert_character(db, name, debut, value, allegiance, alive)
+  db.execute("INSERT OR IGNORE INTO characters (name, first_seen, allegiance_value, allegiance_id, alive) VALUES (?, ?, ?, ?, ?)", [name, debut, value, allegiance, alive])
+end
+
+insert_character(thronesdb, "Stannis Baratheon", "Season 2", 0, 1, "false")
+
 
 characters = thronesdb.execute("SELECT * FROM characters")
 p characters
