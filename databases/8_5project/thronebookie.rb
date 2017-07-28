@@ -8,6 +8,7 @@
 require 'sqlite3'
 
 thronesdb = SQLite3::Database.new("thronesdb.db")
+# thronesdb.results_as_hash = true
 
 create_characters_table = <<-SQL
   CREATE TABLE IF NOT EXISTS characters(
@@ -25,7 +26,6 @@ create_houses_table = <<-SQL
   CREATE TABLE IF NOT EXISTS houses(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255) UNIQUE,
-    stronghold_id INT,
     leader_id INT,
     house_value INT,
     FOREIGN KEY (leader_id) REFERENCES characters(id)
