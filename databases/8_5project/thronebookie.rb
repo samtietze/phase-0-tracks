@@ -63,6 +63,7 @@ end
 # insert_character(thronesdb, "Robert Baratheon", "Season 1", 0, 2, "false")
 # insert_character(thronesdb, "Stannis Baratheon", "Season 2", 0, 2, "false")
 insert_character(thronesdb, "Cersei Lannister", "Season 1", 5, 1, "true")
+insert_character(thronesdb, "Jaime Lannister", "Season 1", 5, 1, "true")
 
 # Now a method for both the houses and the strongholds
 # that takes in arguments for each of those tables'
@@ -86,9 +87,9 @@ insert_house(thronesdb, "House Lannister", 1)
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
-# p characters
-# p strongholds
-# p houses
+p characters
+p strongholds
+p houses
 
 # p characters[0].keys[8].class
 # Now that we have a complete "set", that is a character
@@ -97,25 +98,64 @@ houses = thronesdb.execute("SELECT * FROM houses")
 # we can add together the values so House Lannister should
 # see a total "test" value of 15.
 
+characters = characters.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+strongholds = strongholds.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+p characters
+p strongholds
+p houses
+
+# ===========================
+# This isn't working. Forgot to account for multiple hashes
+# in an array! Stupid mistake. Will need to come back to
+# figure this issue out. For now, we will use String keys!
+
+
 # Before we get to work, we should clear up these hashes
 # and convert the keys to symbols to make the CPU happy:
   # The characters variable, at index 0, needs to
   # have the duplicated integer keys removed.
-characters = characters[0].delete_if {|column, row| column.class == Fixnum}
-p characters
+
 # Now that the unnecessary keys are gone, we need to
 # iterate through the array of arrays and make them into
 # a hash table. Thankfully, each key can be converted into
 # a symbol now.
-characters = Hash[characters.map {|column, row| [column.to_sym, row]}]
+# characters = Hash[characters.map {|column, row| [column.to_sym, row]}]
 
-p characters
-# We can refactor this later by adding the code from LN104
-# to LN110's "characters.map" statement. Don't bother now.
 
-strongholds = Hash[strongholds[0].delete_if {|column, row| column.class == Fixnum}.map{|column, row| [column.to_sym, row]}]
+# strongholds = Hash[strongholds[0].delete_if {|column, row| column.class == Fixnum}.map{|column, row| [column.to_sym, row]}]
 
-houses = Hash[houses[0].delete_if {|column, row| column.class == Fixnum}.map {|column, row| [column.to_sym, row]}]
-p strongholds
+# houses = Hash[houses[0].delete_if {|column, row| column.class == Fixnum}.map {|column, row| [column.to_sym, row]}]
+
+# ==========================
+
+
+# The value of the house should be updated for every
+# character that is allied with that house, and for every
+# stronghold that belongs to that house.
+# One difficulty that might come up is re-adding a character
+# or stronghold's value to the house over and over.
+# Input: thrones database, characters hash
+# No explicit output
+# Method will use Ruby to add up the values of chars/castles
+# and then SQL to update the values in the houses table.
+def house_allegiances(db, chars)
+  lannister = 0
+  stark = 0
+  targaryan = 0
+
+  chars.each do |character|
+    if character["allegiance_id"] == 1
+      lannister += character["allegiance_value"]
+    elsif character["allegiance_id"] == 2
+      stark += character["allegiance_value"]
+    elsif character["allegiance_id"] == 3
+      targaryan += character["allegiance_value"]
+    end
+  end
+  db.execute("UPDATE houses SET house_value=#{lannister} WHERE name='House Lannister'")
+
+end
+
+house_allegiances(thronesdb, characters)
 p houses
-
