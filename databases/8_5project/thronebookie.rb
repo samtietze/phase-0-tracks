@@ -135,11 +135,11 @@ p houses
 # stronghold that belongs to that house.
 # One difficulty that might come up is re-adding a character
 # or stronghold's value to the house over and over.
-# Input: thrones database, characters hash
+# Input: thrones database, characters hash, strongholds hash
 # No explicit output
 # Method will use Ruby to add up the values of chars/castles
 # and then SQL to update the values in the houses table.
-def house_allegiances(db, chars)
+def house_value_calc(db, chars, castles)
   lannister = 0
   stark = 0
   targaryan = 0
@@ -153,9 +153,23 @@ def house_allegiances(db, chars)
       targaryan += character["allegiance_value"]
     end
   end
-  db.execute("UPDATE houses SET house_value=#{lannister} WHERE name='House Lannister'")
+  castles.each do |castle|
+    if castle["house_affiliation_id"] == 1
+      lannister += castle["stronghold_value"]
+    elsif castle["house_affiliation_id"] == 2
+      stark += castle["stronghold_value"]
+    elsif castle["house_affiliation_id"] == 3
+      targaryan += castle["stronghold_value"]
+    end
+  end
 
+  db.execute("UPDATE houses SET house_value=#{lannister} WHERE name='House Lannister'")
+  db.execute("UPDATE houses SET house_value=#{stark} WHERE name='House Stark'")
+  db.execute("UPDATE houses SET house_value=#{targaryan} WHERE name='House Targaryan'")
 end
 
-house_allegiances(thronesdb, characters)
+2.times{puts()}
+house_value_calc(thronesdb, characters, strongholds)
+
 p houses
+
