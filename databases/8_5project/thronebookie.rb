@@ -8,7 +8,7 @@
 require 'sqlite3'
 
 thronesdb = SQLite3::Database.new("thronesdb.db")
-# thronesdb.results_as_hash = true
+thronesdb.results_as_hash = true
 
 create_characters_table = <<-SQL
   CREATE TABLE IF NOT EXISTS characters(
@@ -86,6 +86,36 @@ insert_house(thronesdb, "House Lannister", 1)
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
+# p characters
+# p strongholds
+# p houses
+
+# p characters[0].keys[8].class
+# Now that we have a complete "set", that is a character
+# with a value, a stronghold with a value, and both of
+# these elements associated with one house (Lannister),
+# we can add together the values so House Lannister should
+# see a total "test" value of 15.
+
+# Before we get to work, we should clear up these hashes
+# and convert the keys to symbols to make the CPU happy:
+  # The characters variable, at index 0, needs to
+  # have the duplicated integer keys removed.
+characters = characters[0].delete_if {|column, row| column.class == Fixnum}
 p characters
+# Now that the unnecessary keys are gone, we need to
+# iterate through the array of arrays and make them into
+# a hash table. Thankfully, each key can be converted into
+# a symbol now.
+characters = Hash[characters.map {|column, row| [column.to_sym, row]}]
+
+p characters
+# We can refactor this later by adding the code from LN104
+# to LN110's "characters.map" statement. Don't bother now.
+
+strongholds = Hash[strongholds[0].delete_if {|column, row| column.class == Fixnum}.map{|column, row| [column.to_sym, row]}]
+
+houses = Hash[houses[0].delete_if {|column, row| column.class == Fixnum}.map {|column, row| [column.to_sym, row]}]
 p strongholds
 p houses
+
