@@ -87,9 +87,9 @@ insert_house(thronesdb, "House Lannister", 1)
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
-p characters
-p strongholds
-p houses
+# p characters
+# p strongholds
+# p houses
 
 # p characters[0].keys[8].class
 # Now that we have a complete "set", that is a character
@@ -101,9 +101,7 @@ p houses
 characters = characters.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
 strongholds = strongholds.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
 houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
-p characters
-p strongholds
-p houses
+
 
 # ===========================
 # This isn't working. Forgot to account for multiple hashes
@@ -171,5 +169,10 @@ end
 2.times{puts()}
 house_value_calc(thronesdb, characters, strongholds)
 
-p houses
 
+characters = thronesdb.execute("SELECT * FROM characters")
+strongholds = thronesdb.execute("SELECT * FROM strongholds")
+houses = thronesdb.execute("SELECT * FROM houses")
+p characters
+p strongholds
+p houses
