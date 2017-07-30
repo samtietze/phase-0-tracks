@@ -140,15 +140,21 @@ houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnu
 def house_value_calc(db, chars, castles)
   lannister = 0
   stark = 0
-  targaryan = 0
+  targaryen = 0
+  nights_watch = 0
+  brotherhood = 0
 
   chars.each do |character|
-    if character["allegiance_id"] == 1
+    if character["allegiance_id"] == 1 && character["alive"]
       lannister += character["allegiance_value"]
-    elsif character["allegiance_id"] == 2
+    elsif character["allegiance_id"] == 2 && character["alive"]
       stark += character["allegiance_value"]
-    elsif character["allegiance_id"] == 3
-      targaryan += character["allegiance_value"]
+    elsif character["allegiance_id"] == 3 && character["alive"]
+      targaryen += character["allegiance_value"]
+    elsif character["allegiance_id"] == 4 && character["alive"]
+      nights_watch += character["allegiance_value"]
+    elsif character["allegiance_id"] == 5 && character["alive"]
+      brotherhood += character["allegiance_value"]
     end
   end
   castles.each do |castle|
@@ -157,21 +163,23 @@ def house_value_calc(db, chars, castles)
     elsif castle["house_affiliation_id"] == 2
       stark += castle["stronghold_value"]
     elsif castle["house_affiliation_id"] == 3
-      targaryan += castle["stronghold_value"]
+      targaryen += castle["stronghold_value"]
+    elsif castle["house_affiliation_id"] == 4
+      nights_watch += castle["stronghold_value"]
     end
   end
 
   db.execute("UPDATE houses SET house_value=#{lannister} WHERE name='House Lannister'")
   db.execute("UPDATE houses SET house_value=#{stark} WHERE name='House Stark'")
-  db.execute("UPDATE houses SET house_value=#{targaryan} WHERE name='House Targaryan'")
+  db.execute("UPDATE houses SET house_value=#{targaryen} WHERE name='House Targaryen'")
 end
 
 2.times{puts()}
 house_value_calc(thronesdb, characters, strongholds)
 
 
-characters = thronesdb.execute("SELECT * FROM characters")
-strongholds = thronesdb.execute("SELECT * FROM strongholds")
+# characters = thronesdb.execute("SELECT * FROM characters")
+# strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
 p characters
 p strongholds
