@@ -83,13 +83,25 @@ insert_stronghold(thronesdb, "King's Landing", 10, 1)
 
 insert_house(thronesdb, "House Lannister", 1)
 
+# I noticed I was using the following code several times in order
+# to clean up the hash tables that SQL produced. This method simply
+# contains that code:
+# INPUT: variables tied to each table
+# Process: Deleting any key-value pairs that are integers
+
+def table_cleaner(results)
+  results = results.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+  # castles = castles.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+  # houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+end
+
 # ====================
 # Time to copy over the Character and Castle
 # data. Each come in the form of "driver code"
 # rather than iterated-upon arrays. Both
 # approaches makes sense, but after speaking
 # with my advisor, I don't believe either are
-# really worth approaching over the other.
+# really worth approaching over the other in this scenario.
 
 # Since characters and strongholds are changing
 # throughout the show, I felt that running each
@@ -261,6 +273,7 @@ insert_house(thronesdb, "House Targaryen", 4)
 insert_house(thronesdb, "Nights Watch", 58)
 insert_house(thronesdb, "Brotherhood Without Banners", 74)
 
+
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
@@ -268,16 +281,9 @@ houses = thronesdb.execute("SELECT * FROM houses")
 # p strongholds
 # p houses
 
-# p characters[0].keys[8].class
-# Now that we have a complete "set", that is a character
-# with a value, a stronghold with a value, and both of
-# these elements associated with one house (Lannister),
-# we can add together the values so House Lannister should
-# see a total "test" value of 15.
-
 
 # ===========================
-# This isn't working. Forgot to account for multiple hashes
+# The following isn't working. Forgot to account for multiple hashes
 # in an array! Stupid mistake. Will need to come back to
 # figure this issue out. For now, we will use String keys!
 
@@ -292,7 +298,6 @@ houses = thronesdb.execute("SELECT * FROM houses")
 # a hash table. Thankfully, each key can be converted into
 # a symbol now.
 # characters = Hash[characters.map {|column, row| [column.to_sym, row]}]
-
 
 # strongholds = Hash[strongholds[0].delete_if {|column, row| column.class == Fixnum}.map{|column, row| [column.to_sym, row]}]
 
@@ -354,16 +359,66 @@ end
 house_value_calc(thronesdb, characters, strongholds)
 
 # Here we go.
+
+
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
-
-characters = characters.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
-strongholds = strongholds.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
-houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
+table_cleaner(characters)
+table_cleaner(strongholds)
+table_cleaner(houses)
 
 p characters
 p strongholds
 
 3.times{puts()}
 p houses
+
+3.times{puts()}
+# Now we should make some methods and driver code for the fun stuff. Maybe SQL related
+# to who is still alive, which house is winning, and other statistics.
+
+characters.each do |char|
+  if char["alive"] == "true"
+    puts "#{char["name"]} is still alive, and has been since #{char["first_seen"]}."
+  end
+end
+
+2.times{puts()}
+# Let's pull out the strongholds associated with each house.
+# This time we'll use some more SQL commands, just for fun.
+who_owns_what = thronesdb.execute("SELECT strongholds.name, houses.name FROM strongholds JOIN houses ON strongholds.house_affiliation_id = houses.id")
+who_owns_what.each do |house|
+  p "#{house['name']} currently claims #{house[0]}."
+end
+
+# We need a method for updating the deaths of characters!
+# Character Death:
+# Input: character name
+# Process: Match character's name with the array of hashes and
+# use SQL to update their "alive" status.
+2.times{puts()}
+def character_death(db, name)
+  db.execute("UPDATE characters SET alive='false' WHERE name=?", [name])
+  "#{name} has perished."
+end
+p character_death(thronesdb, "Olenna Tyrell")
+# Let's test this:
+p characters[61]
+# Too bad.
+
+2.times{puts()}
+# Now, for the final results of this prediction program:
+# a reusable method to pull out the house who has the most points
+# INPUT: our array of houses
+# Process: Find the MAX value of the array and line its index up with
+# the index of the houses array from SQL.
+# Output: a string with interpolated values.
+def win_predictor(houses)
+  winning_house = []
+  houses.each do |house|
+    winning_house << house["house_value"]
+  end
+  "#{houses[winning_house.each_with_index.max[1]]["name"]} is currently in the lead, with #{winning_house.max} points!"
+end
+p win_predictor(houses)
