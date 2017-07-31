@@ -108,9 +108,6 @@ end
 # method individually was an accurate reflection
 # of how new characters would be entered into this
 # database were we to start from season 1.
-
-2.times{puts()}
-
 insert_character(thronesdb, "Tyrion Lannister", "Season 1", 5, 3, "true")
 insert_character(thronesdb, "Daenarys Targaryen", "Season 1", 5, 3, "true")
 insert_character(thronesdb, "Jon Snow", "Season 1", 5, 2, "true")
@@ -287,16 +284,6 @@ houses = thronesdb.execute("SELECT * FROM houses")
 # in an array! Stupid mistake. Will need to come back to
 # figure this issue out. For now, we will use String keys!
 
-
-# Before we get to work, we should clear up these hashes
-# and convert the keys to symbols to make the CPU happy:
-  # The characters variable, at index 0, needs to
-  # have the duplicated integer keys removed.
-
-# Now that the unnecessary keys are gone, we need to
-# iterate through the array of arrays and make them into
-# a hash table. Thankfully, each key can be converted into
-# a symbol now.
 # characters = Hash[characters.map {|column, row| [column.to_sym, row]}]
 
 # strongholds = Hash[strongholds[0].delete_if {|column, row| column.class == Fixnum}.map{|column, row| [column.to_sym, row]}]
@@ -403,8 +390,6 @@ def character_death(db, name)
   "#{name} has perished."
 end
 p character_death(thronesdb, "Olenna Tyrell")
-# Let's test this:
-p characters[61]
 # Too bad.
 
 2.times{puts()}
