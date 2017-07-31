@@ -98,7 +98,7 @@ insert_character(thronesdb, "Cley Cerwyn", "Season 6", 1, 2, "true")
 insert_character(thronesdb, "Denys Mallister", "Season 5", 1, 4, "true")
 insert_character(thronesdb, "Anya Waynwood", "Season 4", 1, 2, "true")
 insert_character(thronesdb, "Vance Corbray", "Season 4", 1, 2, "true")
-insert_character(thronesdb, "Vance Corbray", "Season 4", 1, 2, "true")
+
 
 
 # 1 - House Lannister

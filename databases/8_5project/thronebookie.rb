@@ -254,6 +254,13 @@ insert_stronghold(thronesdb, "Queenscrown", 5, 4)
 
 # ===========================
 
+# The house table is the last one to fill out:
+
+insert_house(thronesdb, "House Stark", 5)
+insert_house(thronesdb, "House Targaryen", 4)
+insert_house(thronesdb, "Nights Watch", 58)
+insert_house(thronesdb, "Brotherhood Without Banners", 74)
+
 characters = thronesdb.execute("SELECT * FROM characters")
 strongholds = thronesdb.execute("SELECT * FROM strongholds")
 houses = thronesdb.execute("SELECT * FROM houses")
@@ -338,6 +345,8 @@ def house_value_calc(db, chars, castles)
   db.execute("UPDATE houses SET house_value=#{lannister} WHERE name='House Lannister'")
   db.execute("UPDATE houses SET house_value=#{stark} WHERE name='House Stark'")
   db.execute("UPDATE houses SET house_value=#{targaryen} WHERE name='House Targaryen'")
+  db.execute("UPDATE houses SET house_value=#{nights_watch} WHERE name='Nights Watch'")
+  db.execute("UPDATE houses SET house_value=#{brotherhood} WHERE name='Brotherhood Without Banners'")
 end
 
 2.times{puts()}
@@ -353,12 +362,8 @@ characters = characters.each {|hash| hash.delete_if {|column, row| column.class 
 strongholds = strongholds.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
 houses = houses.each {|hash| hash.delete_if {|column, row| column.class == Fixnum}}
 
-
 p characters
 p strongholds
 
-
-
 3.times{puts()}
-
 p houses
