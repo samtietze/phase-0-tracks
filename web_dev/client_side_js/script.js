@@ -1,10 +1,15 @@
 console.log("The script is running!");
 
 function hideImage() {
-  var img = document.getElementById("bookimg");
-  if (img.style.visibility === "hidden") {
-    img.style.visibility = "visible";
+
+  var bookimg = document.getElementById("bookimg");
+
+  if (bookimg.style.visibility === "hidden") {
+    bookimg.style.visibility = "visible";
   } else {
-    img.style.visibility = "hidden";
+    bookimg.style.visibility = "hidden";
   }
 }
+
+var img = document.getElementById("myBtn");
+img.addEventListener("click", hideImage);
